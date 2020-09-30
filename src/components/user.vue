@@ -1,7 +1,9 @@
 <template>
-  <div v-if="selection.name != undefined">
-    <h2>User Mode:</h2>
-    <img :src="selection.image" />
+  <div id="content" v-if="selection.name != undefined">
+    <h2>You</h2>
+    <div id="objects">
+      <img :src="selection.image" />
+    </div>
   </div>
 </template>
 
@@ -10,11 +12,15 @@ export default {
   name: "user-player",
   computed: {
     selection() {
-      return this.$store.userGame;
+      return this.$store.state.userGame;
     }
   }
 };
 </script>
 
 <style scoped>
+#objects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 </style>

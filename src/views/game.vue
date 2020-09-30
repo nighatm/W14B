@@ -1,17 +1,18 @@
 <template>
   <div id="content">
-    <h3>Welome to the game view!</h3>
+    <h3>Welome to the Rock Paper Scissors Game in Vue!</h3>
     <div v-if="token != undefined">
       <div>
-      <button @click="select(0)">Rock</button>
-      <button @click="select(1)">Paper</button>
-      <button @click="select(2)">Scissors</button>
+        <button @click="select(0)">Rock</button>
+        <button @click="select(1)">Paper</button>
+        <button @click="select(2)">Scissors</button>
+      </div>
+      <div id="objects">
+        <game-score />
+        <user-player />
+        <computer-player />
+      </div>
     </div>
-      <game-score />
-      <user-player />
-      <computer-player />
-    </div>
-    
 
     <div v-else>
       <h3>to Login in.. return to "Login Page"!</h3>
@@ -70,7 +71,7 @@ export default {
       token: cookies.get("token")
     };
   },
-    methods: {
+  methods: {
     select: function(index) {
       let userGame = this.gameItems[index];
       let computerGame = this.gameItems[Math.floor(Math.random() * 3)];
@@ -91,9 +92,14 @@ export default {
 
 <style scoped>
 #content {
-  border: 3px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: beige;
+  text-align: center;
+  justify-items: center;
+}
+#objects {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: beige;
 }
 </style>
